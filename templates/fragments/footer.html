@@ -1,7 +1,0 @@
-{# Barra de navegação inferior. Variáveis: aba (inicio | rotas | notificacoes | perfil) e passageiro #}
-<nav class="nav">
-  <a href="{% url 'passageiros:inicio' passageiro.id %}" class="{% if aba == 'inicio' %}on{% endif %}"><span>🏠</span>Início</a>
-  <a href="{% url 'passageiros:rota' passageiro.id %}" class="{% if aba == 'rotas' %}on{% endif %}"><span>🚌</span>Rotas</a>
-  <a href="{% url 'passageiros:notificacoes' passageiro.id %}" class="{% if aba == 'notificacoes' %}on{% endif %}"><span>🔔</span>Notificações</a>
-  <a href="{% url 'passageiros:perfil' passageiro.id %}" class="{% if aba == 'perfil' %}on{% endif %}"><span>👤</span>Perfil</a>
-</nav>
