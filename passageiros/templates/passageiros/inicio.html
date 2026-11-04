@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'passageiros/css/passageiros.css' %}">{% endblock %}
+
+{% block content %}
+  {% if passageiro.situacao != "aprovado" %}
+    <div class="info" style="margin-bottom:14px">ⓘ Seu cadastro está: {{ passageiro.get_situacao_display }}.</div>
+  {% endif %}
+
+  <section class="card">
+    <span class="kicker">Sua frequência de hoje</span>
+    {% if marcados %}
+      <p class="hint">Registrado hoje:
+        {% for m in marcados %}{{ m.get_tipo_display }}{% if not forloop.last %} e {% endif %}{% endfor %}.
+      </p>
+    {% else %}
+      <p class="hint">Você ainda não registrou a frequência de hoje.</p>
+    {% endif %}
+
+    {% include "passageiros/trecho.html" with tipo="ida" titulo="→ Ida" origem="Minha casa" destino="Instituição de ensino" ok=ida_ok %}
+    {% include "passageiros/trecho.html" with tipo="volta" titulo="← Volta" origem="Instituição de ensino" destino="Minha casa" ok=volta_ok %}
+  </section>
+
+  <p class="kicker" style="margin:6px 0 10px">Acesso rápido</p>
+  <div class="grid">
+    <a class="tile" href="{% url 'passageiros:meus_dados' passageiro.id %}"><i>👤</i>Meus dados<small>Ver dados</small></a>
+    <a class="tile" href="{% url 'passageiros:enderecos' passageiro.id %}"><i>📍</i>Endereços<small>Ver endereço</small></a>
+    <a class="tile" href="{% url 'passageiros:historico' passageiro.id %}"><i>🕘</i>Histórico<small>Minhas viagens</small></a>
+    <a class="tile" href="{% url 'passageiros:configuracoes' passageiro.id %}"><i>⚙️</i>Configurações<small>Preferências</small></a>
+    <a class="tile" href="{% url 'passageiros:ajuda' passageiro.id %}"><i>❓</i>Ajuda<small>Suporte</small></a>
+  </div>
+{% endblock %}

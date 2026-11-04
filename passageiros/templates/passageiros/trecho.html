@@ -1,0 +1,20 @@
+{# Linha de ida ou volta (usada no menu inicial). Variáveis: tipo, titulo, origem, destino, ok #}
+<div class="trecho">
+  <div class="trecho-info">
+    <b>
+      {{ titulo }}
+      <span class="pill {% if ok %}ok{% else %}pendente{% endif %}">{% if ok %}Confirmado{% else %}Pendente{% endif %}</span>
+    </b>
+    <small>{{ origem }} → {{ destino }}</small>
+  </div>
+
+  <form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="tipo" value="{{ tipo }}">
+    {% if ok %}
+      <button class="btn outline" name="acao" value="cancelar">Cancelar</button>
+    {% else %}
+      <button class="btn" name="acao" value="confirmar">Confirmar</button>
+    {% endif %}
+  </form>
+</div>
