@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'passageiros/css/passageiros.css' %}">{% endblock %}
+
+{% block content %}
+  <section class="card">
+    <b>🎧 Secretaria Municipal de Educação</b>
+    <p class="hint">Atendimento de segunda a sexta, 8h às 17h</p>
+    <div class="row"><b>✉ secretaria@edu.gov.br</b></div>
+    <div class="row"><b>📞 (00) 0000-0000</b></div>
+    <div class="row"><b>📍 Sede da secretaria de educação</b></div>
+  </section>
+
+  <p class="kicker" style="margin-bottom:10px">Perguntas frequentes</p>
+  <details><summary>Como informo minha frequência?</summary>
+    <p>Na tela Ida e volta, escolha o dia e clique em confirmar a ida e/ou a volta. Para desfazer, clique em cancelar.</p></details>
+  <details><summary>Quando meu cadastro será aprovado?</summary>
+    <p>A secretaria analisa os dados enviados. Você será avisado após a validação.</p></details>
+  <details><summary>Como consigo uma declaração?</summary>
+    <p>Quando o transporte não funcionar, a secretaria emite a declaração para os passageiros afetados.</p></details>
+
+  <a class="btn outline" href="{% url 'passageiros:inicio' passageiro.id %}">Voltar ao início</a>
+{% endblock %}

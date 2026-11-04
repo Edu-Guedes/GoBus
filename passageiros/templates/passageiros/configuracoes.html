@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'passageiros/css/passageiros.css' %}">{% endblock %}
+
+{% block content %}
+  <section class="card">
+    <label class="switch">🔔 Receber notificações <input type="checkbox" data-pref="notif" checked></label>
+    <label class="switch">✉️ Avisos por e-mail <input type="checkbox" data-pref="email"></label>
+    <label class="switch">💬 Avisos por SMS <input type="checkbox" data-pref="sms"></label>
+  </section>
+  <p class="hint">As preferências ficam salvas neste dispositivo.</p>
+{% endblock %}
+
+{% block extra_js %}
+  <script src="{% static 'passageiros/js/preferencias.js' %}"></script>
+{% endblock %}
