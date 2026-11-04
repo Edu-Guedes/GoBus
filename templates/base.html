@@ -1,0 +1,33 @@
+{% load static %}<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}GoBus{% if titulo %} · {{ titulo }}{% endif %}{% endblock %}</title>
+
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+  <div class="app">
+
+    {% block header %}
+      {% include "fragments/header.html" %}
+    {% endblock %}
+
+    <main class="content">
+      {% block content %}{% endblock %}
+    </main>
+
+    {% block footer %}
+      {% include "fragments/footer.html" %}
+    {% endblock %}
+
+  </div>
+
+  {% block extra_js %}{% endblock %}
+</body>
+
+</html>

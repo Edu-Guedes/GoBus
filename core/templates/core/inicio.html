@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block footer %}{% endblock %}
+
+{% block content %}
+  <p class="hint" style="font-size:.85rem">Escolha o passageiro para abrir a área dele.</p>
+
+  {% for p in passageiros %}
+    <a class="card line-top" style="align-items:center" href="{% url 'passageiros:inicio' p.id %}">
+      <div>
+        <b>{{ p.nome }}</b>
+        <p class="hint" style="margin:2px 0 0">{{ p.get_vinculo_display }} • {{ p.cpf }}</p>
+      </div>
+      <span class="pill {{ p.situacao }}">{{ p.get_situacao_display }}</span>
+    </a>
+  {% empty %}
+    <div class="info">ⓘ Nenhum passageiro cadastrado. Cadastre pelo painel <a href="/admin/"><b>/admin/</b></a>.</div>
+  {% endfor %}
+{% endblock %}
