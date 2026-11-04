@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="card">
+    <div class="row"><span>Nome completo</span><b>{{ passageiro.nome }}</b></div>
+    <div class="row"><span>CPF</span><b>{{ passageiro.cpf }}</b></div>
+    <div class="row"><span>Idade</span><b>{{ passageiro.idade }}</b></div>
+    <div class="row"><span>Telefone</span><b>{{ passageiro.telefone }}</b></div>
+    <div class="row"><span>E-mail</span><b>{{ passageiro.email|default:"—" }}</b></div>
+    <div class="row"><span>Vínculo</span><b>{{ passageiro.get_vinculo_display }}</b></div>
+    <div class="row"><span>Situação do cadastro</span><b>{{ passageiro.get_situacao_display }}</b></div>
+  </section>
+
+  <div class="info">ⓘ Para alterar seus dados, procure a secretaria do transporte com os documentos atualizados.</div>
+{% endblock %}

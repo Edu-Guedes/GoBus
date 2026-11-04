@@ -1,0 +1,4 @@
+{# Botão de notificações (sininho) do cabeçalho. Variável: passageiro (some nas telas sem passageiro) #}
+{% if passageiro %}
+  <a class="circle sino" href="{% url 'passageiros:notificacoes' passageiro.id %}" aria-label="Notificações">🔔</a>
+{% endif %}
