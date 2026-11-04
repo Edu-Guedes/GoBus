@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'passageiros/css/passageiros.css' %}">{% endblock %}
+
+{% block content %}
+  <section class="card">
+    <div class="days">
+      {% for d in dias %}
+        <a class="day {% if d == dia %}on{% endif %}" href="?d={{ d|date:'Y-m-d' }}">
+          {{ d|date:"D"|upper }}<b>{{ d.day }}</b>
+        </a>
+      {% endfor %}
+    </div>
+    <p class="dia-texto">{{ dia|date:"l, j \d\e F"|capfirst }}</p>
+  </section>
+
+  {% include "passageiros/trecho.html" with tipo="ida" titulo="→ Ida" origem="Minha casa" destino="Instituição de ensino" ok=ida_ok %}
+  {% include "passageiros/trecho.html" with tipo="volta" titulo="← Volta" origem="Instituição de ensino" destino="Minha casa" ok=volta_ok %}
+
+  <p class="hint">Marque sua ida e volta diariamente para ajudar no planejamento da viagem.</p>
+{% endblock %}

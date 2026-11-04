@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'passageiros/css/passageiros.css' %}">{% endblock %}
+
+{% block content %}
+  <nav class="tabs">
+    <a href="?tipo=todas" class="{% if filtro == 'todas' %}on{% endif %}">Todas</a>
+    <a href="?tipo=avisos" class="{% if filtro == 'avisos' %}on{% endif %}">Avisos</a>
+    <a href="?tipo=alertas" class="{% if filtro == 'alertas' %}on{% endif %}">Alertas</a>
+  </nav>
+
+  {% for n in notificacoes %}
+    <article class="notif {{ n.tipo }}">
+      <div class="line-top">
+        <b>{{ n.icone }} {{ n.titulo }}</b>
+        <span class="notif-tempo">{{ n.tempo_curto }}</span>
+      </div>
+      <p>{{ n.mensagem|linebreaksbr }}</p>
+      <span class="notif-hora">{{ n.criada_em|date:"H:i" }}</span>
+    </article>
+  {% empty %}
+    <p class="empty">Nenhuma notificação por aqui.</p>
+  {% endfor %}
+{% endblock %}
